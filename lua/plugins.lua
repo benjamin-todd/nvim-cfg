@@ -137,5 +137,10 @@ require("lazy").setup({
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
   build = ':TSUpdate'
-  }
+  },
+  {
+  "goolord/alpha-nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  event = "VimEnter",
+  },
 })
