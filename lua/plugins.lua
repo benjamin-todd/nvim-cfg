@@ -143,4 +143,18 @@ require("lazy").setup({
   dependencies = { "nvim-tree/nvim-web-devicons" },
   event = "VimEnter",
   },
+  {
+  "mason-org/mason.nvim",
+  opts = {},
+  },
+  {
+  "mason-org/mason-lspconfig.nvim",
+  opts = {
+    ensure_installed = { "clangd", "lua_ls" },
+  },
+  dependencies = {
+    { "mason-org/mason.nvim", opts = {} },
+    "neovim/nvim-lspconfig",
+  },
+  },
 })

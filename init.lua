@@ -6,7 +6,6 @@ require("mason-lspconfig").setup()
 require('mini.icons').setup()
 require("oil").setup()
 require('blink.cmp').setup()
-
 -- init.lua
 
 local alpha = require("alpha")
@@ -32,9 +31,9 @@ dashboard.section.header.val = {
   "||      .=='    _-'    `-_  `='    _-'   `-_    `='  _-'   `-_  /|  \\/  |   ||",
   "||   .=='    _-'          `-__\\._-'         `-_./__-'         `' |. /|  |   ||",
   "||.=='    _-'                                                     `' |  /==.||",
-  "=='    _-'                         N E O V I M                         `-_  `==",
-  "\\   _-'                                                                   `-_  /",
-  " `''                                                                          ``",
+  "=='    _-'                         N E O V I M                         `-_ `==",
+  "\\   _-'                                                                   `- /",
+  " `''                                                                        ``  ",
 }
 
 dashboard.section.header.opts = {
@@ -54,3 +53,23 @@ dashboard.section.buttons.val = {
 dashboard.config.opts.noautocmd = true
 
 alpha.setup(dashboard.config)
+
+vim.lsp.config("lua_ls", {})
+vim.lsp.config("clangd", {
+  cmd = { "clangd", "--background-index" },
+})
+
+vim.lsp.enable({ "lua_ls", "clangd" })
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local bufnr = args.buf
+    local opts = { buffer = bufnr }
+    
+    -- Hover documentation for symbol under cursor
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    
+    -- Signature help for function parameters (normal and insert mode)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, opts)
+  end,
+})
