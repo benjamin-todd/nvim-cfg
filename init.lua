@@ -73,3 +73,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, opts)
   end,
 })
+
+vim.opt.ignorecase = true
