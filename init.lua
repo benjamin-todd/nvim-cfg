@@ -75,3 +75,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 vim.opt.ignorecase = true
+
+vim.opt.clipboard = "unnamedplus"
+
+vim.opt.signcolumn = "no"

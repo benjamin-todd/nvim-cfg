@@ -1,0 +1,15 @@
+{
+  "PlatformIO Config": {
+    "prefix": "pio",
+    "body": [
+      "[env:${1:esp32dev}]",
+      "platform = ${2:espressif32}",
+      "board = ${3:esp32dev}",
+      "framework = arduino",
+      "monitor_speed = ${4:115200}",
+      "lib_deps =",
+      "    ${5:}"
+    ],
+    "description": "Basic platformio.ini template"
+  }
+}
